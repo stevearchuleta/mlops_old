@@ -1,6 +1,8 @@
 name: cli-jobs-pipelines-autompg
 on:
   push:
+    branches:
+      - main
   pull_request:
     branches:
       - main
