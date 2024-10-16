@@ -6,9 +6,6 @@ on:
   pull_request:
     branches:
       - main
-    paths:
-      - run-job.sh
-      - setup.sh
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -21,6 +18,9 @@ jobs:
       with:
         node-version: '16'
       
+    - name: Check Azure CLI
+      run: az --version
+
     - name: Azure login
       uses: azure/login@v1.4.4
       with:
@@ -29,7 +29,7 @@ jobs:
     - name: Setup
       run: bash setup.sh
       continue-on-error: true
-      
+
     - name: Run job
       run: bash -x ../../run-job.sh pipeline.yml
       working-directory: jobs/pipeline
