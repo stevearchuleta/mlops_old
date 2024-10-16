@@ -24,7 +24,9 @@ jobs:
     - name: Azure login
       uses: azure/login@v1.4.4
       with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
+        client-id: ${{ secrets.AZURE_CLIENT_ID }}
+        client-secret: ${{ secrets.AZURE_CLIENT_SECRET }}
+        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           
     - name: Setup
       run: bash setup.sh
