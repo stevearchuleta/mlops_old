@@ -18,13 +18,11 @@ jobs:
     - name: Check out repo
       uses: actions/checkout@v3
 
-    - name: Azure login
-      uses: azure/login@v1.4.4
-      with:
-        clientId: ${{ secrets.AZURE_CLIENT_ID }}
-        clientSecret: ${{ secrets.AZURE_CLIENT_SECRET }}
-        tenantId: ${{ secrets.AZURE_TENANT_ID }}
-        subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+- name: Azure login
+  uses: azure/login@v1.4.4
+  with:
+    creds: ${{ secrets.AZURE_CREDENTIALS }}
+
 
     - name: Setup
       run: bash setup.sh
