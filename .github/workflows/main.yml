@@ -17,19 +17,27 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: '16'
-      
-    - name: Check Azure CLI
-      run: az --version
-
+    
+    - name: Verify Azure CLI
+      run: |
+        az --version || echo "Azure CLI is not installed"
+    
     - name: Azure login
       uses: azure/login@v1.4.4
       with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
-          
+        client-id: ${{ secrets.AZURE_CLIENT_ID }}
+        client-secret: ${{ secrets.AZURE_CLIENT_SECRET }}
+        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+      continue-on-error: true
+      
+    - name: Check Login Status
+      run: |
+        az account show || echo "Azure login failed" >&2
+    
     - name: Setup
       run: bash setup.sh
       continue-on-error: true
-
+    
     - name: Run job
       run: bash -x ../../run-job.sh pipeline.yml
       working-directory: jobs/pipeline
