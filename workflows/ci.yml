@@ -37,5 +37,5 @@ jobs:
       continue-on-error: true
 
     - name: Run job
-      run: bash -x ../../run-job.sh pipeline.yml
+      run: bash -x ../run-job.sh pipeline.yml
       working-directory: jobs/pipeline
