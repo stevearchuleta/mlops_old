@@ -11,7 +11,7 @@ jobs:
     inputs:
       data:
         type: uri_file
-        path: azureml:carmpg:1a  # Ensure this path points to the data location in your workspace
+        path: azureml:carmpg:1  # Ensure this path points to the data location in your workspace
     outputs:
       train_data: 
         type: uri_folder
