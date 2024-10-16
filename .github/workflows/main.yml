@@ -22,7 +22,7 @@ jobs:
         node-version: '16'
       
     - name: Azure login
-      uses: azure/login@v1
+      uses: azure/login@v1.4.4
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
           
